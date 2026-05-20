@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom'
-
 export function LegalPage({ type }: { type: 'terms' | 'privacy' }) {
   return (
     <div className="max-w-screen-sm mx-auto px-4 py-8 prose prose-sm text-gray-700">

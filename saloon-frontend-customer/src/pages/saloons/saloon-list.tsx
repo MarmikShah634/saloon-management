@@ -6,7 +6,6 @@ import { saloonApi } from '@/lib/api/endpoints'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { BottomSheet } from '@/components/ui/modal'
-import { formatPrice } from '@/lib/utils'
 import type { Saloon } from '@/lib/api/types'
 
 function SaloonListCard({ saloon }: { saloon: Saloon }) {

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { authApi, userApi } from '@/lib/api/endpoints'
 import { useAuthStore } from '@/lib/stores/auth.store'
@@ -19,7 +19,6 @@ export function ProfilePage() {
   const { user, logout } = useAuthStore()
   const navigate = useNavigate()
   const { toast } = useToast()
-  const queryClient = useQueryClient()
   const [showPw, setShowPw] = useState(false)
 
   const profileForm = useForm({ resolver: zodResolver(schema), values: { name: user?.name ?? '', phone: user?.phone ?? '' } })
@@ -63,10 +62,10 @@ export function ProfilePage() {
       </div>
 
       <Modal open={showPw} onClose={() => setShowPw(false)} title="Change password">
-        <form onSubmit={pwForm.handleSubmit(d => pwMutation.mutate(d))} className="space-y-3 mt-3">
-          <PasswordInput label="Current password" {...pwForm.register('old_password')} error={pwForm.formState.errors.old_password?.message} />
-          <PasswordInput label="New password" {...pwForm.register('new_password')} error={pwForm.formState.errors.new_password?.message} />
-          <PasswordInput label="Confirm" {...pwForm.register('confirm')} error={pwForm.formState.errors.confirm?.message} />
+        <form onSubmit={pwForm.handleSubmit(d => pwMutation.mutate(d as { old_password: string; new_password: string }))} className="space-y-3 mt-3">
+          <PasswordInput label="Current password" {...pwForm.register('old_password')} error={pwForm.formState.errors.old_password?.message as string | undefined} />
+          <PasswordInput label="New password" {...pwForm.register('new_password')} error={pwForm.formState.errors.new_password?.message as string | undefined} />
+          <PasswordInput label="Confirm" {...pwForm.register('confirm')} error={pwForm.formState.errors.confirm?.message as string | undefined} />
           <Button type="submit" className="w-full" loading={pwMutation.isPending}>Change password</Button>
         </form>
       </Modal>

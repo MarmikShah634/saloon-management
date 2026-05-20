@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { type ColumnDef } from '@tanstack/react-table'
-import { format } from 'date-fns'
 import { barberApi, type Barber } from '@/lib/api/endpoints'
 import { DataTable } from '@/components/ui/data-table'
 import { Input, Pagination } from '@/components/ui/index'
@@ -26,7 +25,7 @@ export function BarbersListPage() {
     { id: 'bookings', header: 'Bookings', cell: ({ row }) => row.original.bookings_count ?? '—' },
     { id: 'cancel_rate', header: 'Cancel rate', cell: ({ row }) => row.original.cancel_rate != null ? pct(row.original.cancel_rate) : '—' },
     { id: 'id', header: 'ID', cell: ({ row }) => <code className="font-mono text-xs text-slate-400">{shortId(row.original.id)}</code> },
-    { id: 'created', header: 'Created', cell: ({ row }) => <span className="text-xs text-slate-500">{format(new Date(row.original.user.created_at ?? row.original.id), 'd MMM yyyy')}</span> },
+    { id: 'created', header: 'ID', cell: ({ row }) => <code className="font-mono text-xs text-slate-400">{shortId(row.original.id)}</code> },
   ]
 
   return (

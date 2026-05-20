@@ -51,7 +51,7 @@ export const barberApi = {
   getMe: () => api.get<Barber>('/api/v1/barbers/me'),
   updateProfile: (id: string, payload: { bio?: string; buffer_mins?: number }) =>
     api.patch<Barber>(`/api/v1/barbers/${id}`, payload),
-  getServices: (id: string) => api.get<Page<Service>>(`/api/v1/saloons/me/services?size=100`),
+  getServices: (_id: string) => api.get<Page<Service>>(`/api/v1/saloons/me/services?size=100`),
   assignService: (barberId: string, serviceId: string) =>
     api.post<void>(`/api/v1/barbers/${barberId}/services/${serviceId}`),
   removeService: (barberId: string, serviceId: string) =>

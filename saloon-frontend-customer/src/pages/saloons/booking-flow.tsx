@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation } from '@tanstack/react-query'
-import { ArrowLeft, Check, ChevronRight } from 'lucide-react'
-import { addDays, format, parseISO, startOfDay } from 'date-fns'
+import { ArrowLeft, Check } from 'lucide-react'
+import { addDays, format, parseISO } from 'date-fns'
 import { saloonApi, slotApi, bookingApi } from '@/lib/api/endpoints'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/input'
@@ -446,9 +446,7 @@ function StepReview({ onSuccess }: { onSuccess: (bookingId: string) => void }) {
 export function BookingFlowPage() {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
   const { step, setStep, draft, initDraft, restoreDraft } = useBookingStore()
-  const { toast } = useToast()
 
   useEffect(() => {
     restoreDraft()

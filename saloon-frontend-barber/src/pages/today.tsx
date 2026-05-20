@@ -6,7 +6,7 @@ import { Button, StatusBadge, Skeleton, Modal, useToast } from '@/components/ui/
 import { formatTime, formatPrice } from '@/lib/utils'
 import type { Booking } from '@/lib/api/endpoints'
 import { useState } from 'react'
-import { Clock, User, Scissors, CheckCircle, AlertCircle, Play, CalendarCheck } from 'lucide-react'
+import { Clock, User, CheckCircle, AlertCircle, Play, CalendarCheck } from 'lucide-react'
 
 function BookingCard({ booking }: { booking: Booking }) {
   const queryClient = useQueryClient()

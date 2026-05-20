@@ -100,7 +100,7 @@ function BarberCardItem({ barber, onBook }: { barber: Barber; onBook: (b: Barber
 export function SaloonDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
-  const { initDraft, setServices, draft } = useBookingStore()
+  const { initDraft, setServices } = useBookingStore()
   const [selectedServices, setSelectedServices] = useState<Service[]>([])
   const [barberModal, setBarberModal] = useState<Barber | null>(null)
 

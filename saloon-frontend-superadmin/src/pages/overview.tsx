@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { format, subDays, startOfMonth } from 'date-fns'
+import { format, subDays } from 'date-fns'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 import { useNavigate } from 'react-router-dom'
 import { analyticsApi, saloonApi } from '@/lib/api/endpoints'
-import { StatCard, Button, StatusBadge, ConfirmModal, useToast, Skeleton } from '@/components/ui/index'
+import { StatCard, Button, ConfirmModal, useToast, Skeleton } from '@/components/ui/index'
 import { formatPrice, shortId } from '@/lib/utils'
 
 type Range = '7d' | '30d' | '90d'

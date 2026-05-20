@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { format } from 'date-fns'
-import { Search } from 'lucide-react'
 import { bookingApi } from '@/lib/api/endpoints'
 import { useAuthStore } from '@/lib/stores/auth.store'
 import { Button, Skeleton, StatusBadge, Modal, useToast } from '@/components/ui/index'
-import { formatPrice, formatDateTime } from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
 import type { Booking } from '@/lib/api/endpoints'
 
 export function BookingsPage() {

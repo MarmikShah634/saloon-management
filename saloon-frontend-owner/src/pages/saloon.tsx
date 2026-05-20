@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -46,16 +46,17 @@ export function SaloonPage() {
     queryKey: ['saloon-detail', saloonId],
     queryFn: () => saloonApi.get(saloonId!),
     enabled: !!saloonId,
-    onSuccess: (s: any) => {
-      if (s.working_hours?.length) {
-        const map: Record<number, WorkingHoursRow> = {}
-        s.working_hours.forEach((wh: any) => {
-          map[wh.weekday] = { weekday: wh.weekday, is_open: wh.is_open, open_time: wh.open_time?.slice(0, 5) ?? '09:00', close_time: wh.close_time?.slice(0, 5) ?? '18:00' }
-        })
-        setHours(Array.from({ length: 7 }, (_, i) => map[i] ?? { weekday: i, is_open: false, open_time: '09:00', close_time: '18:00' }))
-      }
-    },
-  } as any)
+  })
+
+  useEffect(() => {
+    if (saloon?.working_hours?.length) {
+      const map: Record<number, WorkingHoursRow> = {}
+      saloon.working_hours.forEach((wh) => {
+        map[wh.weekday] = { weekday: wh.weekday, is_open: wh.is_open, open_time: wh.open_time?.slice(0, 5) ?? '09:00', close_time: wh.close_time?.slice(0, 5) ?? '18:00' }
+      })
+      setHours(Array.from({ length: 7 }, (_, i) => map[i] ?? { weekday: i, is_open: false, open_time: '09:00', close_time: '18:00' }))
+    }
+  }, [saloon])
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({
     resolver: zodResolver(schema),

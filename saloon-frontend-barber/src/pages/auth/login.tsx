@@ -7,7 +7,7 @@ import { authApi, barberApi } from '@/lib/api/endpoints'
 import { useAuthStore } from '@/lib/stores/auth.store'
 import { Button, Input, PasswordInput } from '@/components/ui/index'
 import { ApiError } from '@/lib/api/client'
-import { Scissors, CalendarCheck, Clock } from 'lucide-react'
+import { Scissors } from 'lucide-react'
 
 const schema = z.object({ email: z.string().email(), password: z.string().min(1) })
 type FormData = z.infer<typeof schema>
@@ -49,7 +49,7 @@ export function LoginPage() {
           <h2 className="text-4xl font-extrabold text-white leading-tight mb-3">Your schedule,<br />your way.</h2>
           <p className="text-brand-200 text-lg">Manage bookings with confidence.</p>
           <div className="mt-10 grid grid-cols-2 gap-4 text-center">
-            {[['Real-time', 'Booking updates', CalendarCheck], ['Smart', 'Schedule view', Clock]].map(([n, l, Icon]) => (
+            {[['Real-time', 'Booking updates'], ['Smart', 'Schedule view']].map(([n, l]) => (
               <div key={String(l)} className="bg-white/10 rounded-2xl p-4 border border-white/10">
                 <p className="text-base font-bold text-white">{n}</p>
                 <p className="text-xs text-brand-200 mt-0.5">{l}</p>

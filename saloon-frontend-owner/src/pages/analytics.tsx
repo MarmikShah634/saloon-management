@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { format, subDays, startOfMonth } from 'date-fns'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts'
 import { analyticsApi } from '@/lib/api/endpoints'
 import { useAuthStore } from '@/lib/stores/auth.store'
 import { Skeleton } from '@/components/ui/index'

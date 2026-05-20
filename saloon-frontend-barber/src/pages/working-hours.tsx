@@ -1,4 +1,4 @@
-import { useForm, useFieldArray } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { workingHoursApi } from '@/lib/api/endpoints'
 import { useAuthStore } from '@/lib/stores/auth.store'
@@ -30,7 +30,7 @@ export function WorkingHoursPage() {
     }
   })
 
-  const { register, handleSubmit, watch, control } = useForm<HoursForm>({
+  const { register, handleSubmit, watch } = useForm<HoursForm>({
     values: { hours: defaultHours },
   })
 

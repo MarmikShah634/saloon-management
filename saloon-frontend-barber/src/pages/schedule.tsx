@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { format, addDays, startOfWeek } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { bookingApi } from '@/lib/api/endpoints'
+import { bookingApi, type Booking } from '@/lib/api/endpoints'
 import { useAuthStore } from '@/lib/stores/auth.store'
 import { StatusBadge, Skeleton } from '@/components/ui/index'
 import { formatTime } from '@/lib/utils'
@@ -28,7 +28,7 @@ export function SchedulePage() {
     if (!acc[d]) acc[d] = []
     acc[d].push(b)
     return acc
-  }, {} as Record<string, typeof data.items>)
+  }, {} as Record<string, Booking[]>)
 
   const dayBookings = bookingsByDate[selectedDate] ?? []
 
