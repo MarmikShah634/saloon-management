@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Saloon",
+    "slug": "saloon-management",
+    "version": "1.0.0",
+    "scheme": "saloon",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": { "resizeMode": "contain", "backgroundColor": "#7c3aed" },
+    "ios": { "supportsTablet": false, "bundleIdentifier": "com.saloon.app" },
+    "android": { "adaptiveIcon": { "backgroundColor": "#7c3aed" }, "package": "com.saloon.app" },
+    "plugins": ["expo-router", "expo-secure-store", "expo-font"],
+    "experiments": { "typedRoutes": true }
+  }
+}
