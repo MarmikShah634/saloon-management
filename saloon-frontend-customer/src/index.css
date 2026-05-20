@@ -9,13 +9,14 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: rgb(249 250 251);
+    background-color: #f5f3ff;
     color: rgb(17 24 39);
   }
 
@@ -24,7 +25,6 @@
     outline-offset: 2px;
   }
 
-  /* Safe area for iPhone notch */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
@@ -37,11 +37,54 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
   }
-
   .line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 60%, #6d28d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .card-glow {
+    box-shadow: 0 0 0 1px rgba(124,58,237,0.07), 0 4px 16px rgba(124,58,237,0.07), 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card-glow-hover {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .card-glow-hover:hover {
+    box-shadow: 0 0 0 1px rgba(124,58,237,0.18), 0 8px 32px rgba(124,58,237,0.13), 0 2px 8px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 35%, #4c1d95 65%, #1e1b4b 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }

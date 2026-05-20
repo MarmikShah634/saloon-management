@@ -3,45 +3,41 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    -webkit-text-size-adjust: 100%;
-  }
-
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: rgb(249 250 251);
+    background-color: #f0fdf4;
     color: rgb(17 24 39);
   }
-
-  :focus-visible {
-    outline: 2px solid rgb(22 163 74);
-    outline-offset: 2px;
-  }
-
-  /* Safe area for iPhone notch */
-  .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
+  :focus-visible { outline: 2px solid rgb(22 163 74); outline-offset: 2px; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
 }
 
 @layer utilities {
-  .line-clamp-1 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+  .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+  .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .glass {
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
+  .card-glow {
+    box-shadow: 0 0 0 1px rgba(22,163,74,0.07), 0 4px 16px rgba(22,163,74,0.07), 0 1px 3px rgba(0,0,0,0.05);
+  }
+}
 
-  .line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, #052e16 0%, #14532d 35%, #166534 65%, #052e16 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
